@@ -93,17 +93,29 @@ export default function Home() {
 		register,
 		handleSubmit,
 		control,
-    reset,
-resetField,
+		reset,
+		resetField,
 		formState: { errors },
 	} = useForm<dataInputs>({
+		defaultValues: {
+			name: "",
+			address: "",
+			email: "",
+			beds: "",
+			contact: "",
+			suggestion: "",
+			postcode: "",
+			property_type: "",
+			improvements: [],
+		},
 		resolver: zodResolver(formSchema),
 	});
 
 	const submitForm = async (data: dataInputs) => {
-    const improvements = data.improvements.map((i)=> i.value )
-		console.log({...data, improvements});
-     
+		const improvements = data.improvements.map((i) => i.value);
+		console.log({ ...data, improvements });
+
+		setTimeout(() => reset(), 3000);
 	};
 
 	return (
